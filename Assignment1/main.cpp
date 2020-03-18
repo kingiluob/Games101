@@ -37,10 +37,10 @@ Eigen::Matrix4f get_model_matrix(float rotation_angle)
 Eigen::Matrix4f get_rotation(Vector3f axis,float angle)
 {
     float angle_x,angle_y,angle_z;
-    float length = sqrt(axis.x * axis.x + axis.y*axis.y+axis.z*axis.z);
-    angle_x = acos(axis.x/length);
-    angle_y = acos(axis.y/length);
-    angle_z = acos(axis.z/length);
+    float length = sqrt(axis.x() * axis.x() + axis.y()*axis.y()+axis.z()*axis.z());
+    angle_x = std::acos(axis.x()/length);
+    angle_y = std::acos(axis.y()/length);
+    angle_z = std::acos(axis.z()/length);
     Eigen::Matrix4f m1,m2,m3  = Eigen::Matrix4f::Identity();
     m1<<1,0,0,0,0,cos(angle_x),-sin(angle_x),0,0,sin(angle_x),cos(angle_x),0,0,0,0,1;
     m2<<cos(angle_y),0,sin(angle_y),0,0,1,0,0,-sin(angle_y),0,cos(angle_y),0,0,0,0,1;
