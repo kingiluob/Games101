@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cs18/Desktop/Games_Homework/Assignment3/Texture.cpp" "/home/cs18/Desktop/Games_Homework/Assignment3/build/CMakeFiles/Rasterizer.dir/Texture.cpp.o"
-  "/home/cs18/Desktop/Games_Homework/Assignment3/Triangle.cpp" "/home/cs18/Desktop/Games_Homework/Assignment3/build/CMakeFiles/Rasterizer.dir/Triangle.cpp.o"
-  "/home/cs18/Desktop/Games_Homework/Assignment3/main.cpp" "/home/cs18/Desktop/Games_Homework/Assignment3/build/CMakeFiles/Rasterizer.dir/main.cpp.o"
-  "/home/cs18/Desktop/Games_Homework/Assignment3/rasterizer.cpp" "/home/cs18/Desktop/Games_Homework/Assignment3/build/CMakeFiles/Rasterizer.dir/rasterizer.cpp.o"
+  "/home/cs18/Games101/Assignment3/Texture.cpp" "/home/cs18/Games101/Assignment3/build/CMakeFiles/Rasterizer.dir/Texture.cpp.o"
+  "/home/cs18/Games101/Assignment3/Triangle.cpp" "/home/cs18/Games101/Assignment3/build/CMakeFiles/Rasterizer.dir/Triangle.cpp.o"
+  "/home/cs18/Games101/Assignment3/main.cpp" "/home/cs18/Games101/Assignment3/build/CMakeFiles/Rasterizer.dir/main.cpp.o"
+  "/home/cs18/Games101/Assignment3/rasterizer.cpp" "/home/cs18/Games101/Assignment3/build/CMakeFiles/Rasterizer.dir/rasterizer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/cs18/Desktop/Games_Homework/Assignment3/OBJ_Loader.h
+/home/cs18/Games101/Assignment3/OBJ_Loader.h
 iostream
 -
 vector
@@ -18,67 +18,67 @@ fstream
 math.h
 -
 
-/home/cs18/Desktop/Games_Homework/Assignment3/Shader.hpp
+/home/cs18/Games101/Assignment3/Shader.hpp
 eigen3/Eigen/Eigen
 -
 Texture.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/Texture.hpp
+/home/cs18/Games101/Assignment3/Texture.hpp
 
-/home/cs18/Desktop/Games_Homework/Assignment3/Texture.cpp
+/home/cs18/Games101/Assignment3/Texture.cpp
 
-/home/cs18/Desktop/Games_Homework/Assignment3/Texture.hpp
+/home/cs18/Games101/Assignment3/Texture.hpp
 global.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/global.hpp
+/home/cs18/Games101/Assignment3/global.hpp
 eigen3/Eigen/Eigen
 -
 opencv2/opencv.hpp
 -
 
-/home/cs18/Desktop/Games_Homework/Assignment3/Triangle.cpp
+/home/cs18/Games101/Assignment3/Triangle.cpp
 Triangle.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/Triangle.hpp
+/home/cs18/Games101/Assignment3/Triangle.hpp
 algorithm
 -
 array
 -
 
-/home/cs18/Desktop/Games_Homework/Assignment3/Triangle.hpp
+/home/cs18/Games101/Assignment3/Triangle.hpp
 eigen3/Eigen/Eigen
 -
 Texture.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/Texture.hpp
+/home/cs18/Games101/Assignment3/Texture.hpp
 
-/home/cs18/Desktop/Games_Homework/Assignment3/global.hpp
+/home/cs18/Games101/Assignment3/global.hpp
 
-/home/cs18/Desktop/Games_Homework/Assignment3/main.cpp
+/home/cs18/Games101/Assignment3/main.cpp
 iostream
 -
 opencv2/opencv.hpp
 -
 global.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/global.hpp
+/home/cs18/Games101/Assignment3/global.hpp
 rasterizer.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/rasterizer.hpp
+/home/cs18/Games101/Assignment3/rasterizer.hpp
 Triangle.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/Triangle.hpp
+/home/cs18/Games101/Assignment3/Triangle.hpp
 Shader.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/Shader.hpp
+/home/cs18/Games101/Assignment3/Shader.hpp
 Texture.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/Texture.hpp
+/home/cs18/Games101/Assignment3/Texture.hpp
 OBJ_Loader.h
-/home/cs18/Desktop/Games_Homework/Assignment3/OBJ_Loader.h
+/home/cs18/Games101/Assignment3/OBJ_Loader.h
 
-/home/cs18/Desktop/Games_Homework/Assignment3/rasterizer.cpp
+/home/cs18/Games101/Assignment3/rasterizer.cpp
 algorithm
 -
 rasterizer.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/rasterizer.hpp
+/home/cs18/Games101/Assignment3/rasterizer.hpp
 opencv2/opencv.hpp
 -
 math.h
 -
 
-/home/cs18/Desktop/Games_Homework/Assignment3/rasterizer.hpp
+/home/cs18/Games101/Assignment3/rasterizer.hpp
 eigen3/Eigen/Eigen
 -
 optional
@@ -86,11 +86,11 @@ optional
 algorithm
 -
 global.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/global.hpp
+/home/cs18/Games101/Assignment3/global.hpp
 Shader.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/Shader.hpp
+/home/cs18/Games101/Assignment3/Shader.hpp
 Triangle.hpp
-/home/cs18/Desktop/Games_Homework/Assignment3/Triangle.hpp
+/home/cs18/Games101/Assignment3/Triangle.hpp
 
 /usr/local/include/eigen3/Eigen/Cholesky
 Core
