@@ -6,9 +6,12 @@
 #include <cmath>
 constexpr double MY_PI = 3.1415926;
 
+//comment mac 0318 002
 Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
 {
     Eigen::Matrix4f view = Eigen::Matrix4f::Identity();
+    float hh = 0;
+    float hh = 0;
 
     Eigen::Matrix4f translate;
     translate << 1, 0, 0, -eye_pos[0], 0, 1, 0, -eye_pos[1], 0, 0, 1,
