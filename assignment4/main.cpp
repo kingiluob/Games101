@@ -34,7 +34,7 @@ cv::Point2f recursive_bezier(const std::vector<cv::Point2f> &control_points, flo
 {
     // TODO: Implement de Casteljau's algorithm
     if(control_points.size() ==1 ) return control_points[0];
-    std:vector<cv::Point2f> NextRecursive;
+    std::vector<cv::Point2f> NextRecursive;
     for(int i = 0;i<control_points.size() - 1 ;i++)
     {
         NextRecursive.push_back(std::Point2f(
