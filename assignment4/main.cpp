@@ -66,9 +66,9 @@ void bezier(const std::vector<cv::Point2f> &control_points, cv::Mat &window)
         //solution2
         float maxDis = 1.06066017f;
         float color0 = 0;
-        float color0 = 0;
-        float color0 = 0;
-        float color0 = 0;
+        float color1 = 0;
+        float color2 = 0;
+        float color3 = 0;
         int colorValue = 0;
         color0 = 255 *  (maxDis - std::sqrt( std::pow(point.x-xmin-0.25f,2)+std::pow(point.y-ymin-0.25f,2) )) / maxDis;
         color1 = 255 *  (maxDis - std::sqrt( std::pow(point.x-xmin-0.25f,2)+std::pow(point.y-ymin-0.75f,2) )) / maxDis;
