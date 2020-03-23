@@ -53,8 +53,27 @@ void bezier(const std::vector<cv::Point2f> &control_points, cv::Mat &window)
     for(double t = 0.0;t <= 1.0;t+= 0.001)
     {
         auto point = recursive_bezier(control_points,t);
-        
-        window.at<cv::Vec3b>(point.y, point.x)[1] = 255;//set the color to green
+        int xmin = std::floor(point.x);
+        int ymin = std::floor(point.y);
+
+        //solution - 0
+        //window.at<cv::Vec3b>(point.y, point.x)[1] = 255;//set the color to green
+
+        //solution-1 
+        //int colorValue = 255* 2 * std::sqrt((point.x - xmin - 0.5f)* (point.x - xmin - 0.5f) + (point.y -0.5f - ymin)*(point.y -ymin - 0.5f) ) / 1.41421356;
+        //window.at<cv::Vec3b>(point.y, point.x)[1] = std::min(255,colorValue + window.at<cv::Vec3b>(point.y, point.x)[1]);//set the color to green
+        float color0 = 0;
+        float color1 = 0;
+        float color2 = 0;
+        float color3 = 0;
+        int colorValue = 0;
+        //solution2
+         color0 = 255* std::sqrt((point.x - xmin - 0.25f)* (point.x - xmin - 0.25f) + (point.y -0.25f - ymin)*(point.y -ymin - 0.25f) ) / 1.41421356;;
+         color1 = 255* std::sqrt((point.x - xmin - 0.25f)* (point.x - xmin - 0.25f) + (point.y -0.75f - ymin)*(point.y -ymin - 0.75f) ) / 1.41421356;;
+         color2 = 255* std::sqrt((point.x - xmin - 0.75f)* (point.x - xmin - 0.75f) + (point.y -0.25f - ymin)*(point.y -ymin - 0.25f) ) / 1.41421356;;
+         color3 = 255* std::sqrt((point.x - xmin - 0.75f)* (point.x - xmin - 0.75f) + (point.y -0.75f - ymin)*(point.y -ymin - 0.75f) ) / 1.41421356;;
+         colorValue = (color0 + color1+color2+color3 )/4.0f;
+        window.at<cv::Vec3b>(point.y, point.x)[1] = std::min(255,colorValue + window.at<cv::Vec3b>(point.y, point.x)[1]);//set the color to green
     }
 
 }
@@ -77,7 +96,7 @@ int main()
 
         if (control_points.size() == 4) 
         {
-            naive_bezier(control_points, window);
+            //naive_bezier(control_points, window);
             bezier(control_points, window);
 
             cv::imshow("Bezier Curve", window);
