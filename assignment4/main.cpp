@@ -62,17 +62,19 @@ void bezier(const std::vector<cv::Point2f> &control_points, cv::Mat &window)
         //solution-1 
         //int colorValue = 255* 2 * std::sqrt((point.x - xmin - 0.5f)* (point.x - xmin - 0.5f) + (point.y -0.5f - ymin)*(point.y -ymin - 0.5f) ) / 1.41421356;
         //window.at<cv::Vec3b>(point.y, point.x)[1] = std::min(255,colorValue + window.at<cv::Vec3b>(point.y, point.x)[1]);//set the color to green
-        float color0 = 0;
-        float color1 = 0;
-        float color2 = 0;
-        float color3 = 0;
-        int colorValue = 0;
+        
         //solution2
-         color0 = 255* std::sqrt((point.x - xmin - 0.25f)* (point.x - xmin - 0.25f) + (point.y -0.25f - ymin)*(point.y -ymin - 0.25f) ) / 1.41421356;;
-         color1 = 255* std::sqrt((point.x - xmin - 0.25f)* (point.x - xmin - 0.25f) + (point.y -0.75f - ymin)*(point.y -ymin - 0.75f) ) / 1.41421356;;
-         color2 = 255* std::sqrt((point.x - xmin - 0.75f)* (point.x - xmin - 0.75f) + (point.y -0.25f - ymin)*(point.y -ymin - 0.25f) ) / 1.41421356;;
-         color3 = 255* std::sqrt((point.x - xmin - 0.75f)* (point.x - xmin - 0.75f) + (point.y -0.75f - ymin)*(point.y -ymin - 0.75f) ) / 1.41421356;;
-         colorValue = (color0 + color1+color2+color3 )/4.0f;
+        float maxDis = 1.06066017f;
+        float color0 = 0;
+        float color0 = 0;
+        float color0 = 0;
+        float color0 = 0;
+        int colorValue = 0;
+        color0 = 255 *  (maxDis - std::sqrt( std::pow(point.x-xmin-0.25f,2)+std::pow(point.y-ymin-0.25f,2) )) / maxDis;
+        color1 = 255 *  (maxDis - std::sqrt( std::pow(point.x-xmin-0.25f,2)+std::pow(point.y-ymin-0.75f,2) )) / maxDis;
+        color2 = 255 *  (maxDis - std::sqrt( std::pow(point.x-xmin-0.75f,2)+std::pow(point.y-ymin-0.25f,2) )) / maxDis;
+        color3 = 255 *  (maxDis - std::sqrt( std::pow(point.x-xmin-0.75f,2)+std::pow(point.y-ymin-0.75f,2) )) / maxDis;
+        colorValue = (color0 + color1+color2+color3 )/4.0f;
         window.at<cv::Vec3b>(point.y, point.x)[1] = std::min(255,colorValue + window.at<cv::Vec3b>(point.y, point.x)[1]);//set the color to green
     }
 
