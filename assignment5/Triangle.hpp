@@ -16,17 +16,22 @@ bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f
     Vector3f s = orig - v0;
     Vector3f s1 = crossProduct(dir,e2);
     Vector3f s2 = crossProduct(s,e1);
-    float temp = dotProduct(s1,e1);
-    float t = dotProduct(s2,e2) / temp;
-    float b1 = dotProduct(s1,s) / temp;
-    float b2 = dotProduct(s2,dir) / temp;
-    if (t > 0 && b1 > 0 && b2 > 0 && (1-b1-b2) > 0 )
+
+    float temp = 1 / dotProduct(s1,e1);
+    float t = dotProduct(s2,e2) *  temp;
+    float b1 = dotProduct(s1,s) * temp;
+    float b2 = dotProduct(s2,dir) * temp;
+
+    if (t > 0 && b1 > 0 && b2 > 0 && ((1-b1-b2) > 0) )
     {
+        //std::cout << "inside triangle"<<'\n';
         tnear = t;
-        u = b1;
-        v = b2;
+        u = b2;
+        v = b1;
         return true;
     }
+        //std::cout << "-----------"<<'\n';
+
     return false;
 }
 
