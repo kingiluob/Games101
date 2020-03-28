@@ -26,7 +26,7 @@ bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f
     {
         //std::cout << "inside triangle"<<'\n';
         tnear = t;
-        u = b2;
+        u = 1-b1-b2;
         v = b1;
         return true;
     }
