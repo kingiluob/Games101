@@ -23,8 +23,8 @@ bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f
     if (t > 0 && b1 > 0 && b2 > 0 && (1-b1-b2) > 0 )
     {
         tnear = t;
-        u = b1;
-        v = b2;
+        u = (1-b1-b2) * u + b1 * u + b2 * u;
+        v = (1-b1-b2) * v + b1 * v + b2 * v;
         return true;
     }
     return false;
