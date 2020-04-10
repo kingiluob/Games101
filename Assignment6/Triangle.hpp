@@ -240,14 +240,14 @@ inline Intersection Triangle::getIntersection(Ray ray)
         Object* obj;
         Material* m;
     */
-    if(t_temp < 0) return inter;
+    if(t_tmp < 0) return inter;
     inter.happened = true;
-    inter.coords = ray(t_temp);//???
+    inter.coords = ray(t_tmp);//???
     inter.normal = normal;
     //inter.distance = distance(Vector3f(v0,v1,v2),ray.origin);
-    inter.distance = t_temp;//???
-    inter->obj = this;
-    inter->m = m;
+    inter.distance = t_tmp;//???
+    inter.obj = this;
+    inter.m = m;
 
     return inter;
 }
