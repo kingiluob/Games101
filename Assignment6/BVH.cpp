@@ -11,8 +11,12 @@ BVHAccel::BVHAccel(std::vector<Object*> p, int maxPrimsInNode,
     time(&start);
     if (primitives.empty())
         return;
+    //BVH
+    root = recursiveBuild(primitives);
 
-    root = SAH_recursiveBuild(primitives);
+    //SAH
+    //root = SAH_recursiveBuild(primitives);
+
 
     time(&stop);
     double diff = difftime(stop, start);
@@ -93,7 +97,7 @@ BVHBuildNode* BVHAccel::recursiveBuild(std::vector<Object*> objects)
     return node;
 }
 
-BVHBuildNode* SAH_recursiveBuild(std::vector<Object*>objects)
+BVHBuildNode* BVHAccel::SAH_recursiveBuild(std::vector<Object*>objects)
 {
     BVHBuildNode* node = new BVHBuildNode();
 
@@ -117,6 +121,7 @@ BVHBuildNode* SAH_recursiveBuild(std::vector<Object*>objects)
         return node;
     }
     else {
+        
         Bounds3 centroidBounds;
         for (int i = 0; i < objects.size(); ++i)
             centroidBounds =
@@ -142,6 +147,7 @@ BVHBuildNode* SAH_recursiveBuild(std::vector<Object*>objects)
             });
             break;
         }
+        
 
         auto beginning = objects.begin();
         auto middling = objects.begin();
