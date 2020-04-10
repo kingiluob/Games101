@@ -242,10 +242,10 @@ inline Intersection Triangle::getIntersection(Ray ray)
     */
     if(t_tmp < 0) return inter;
     inter.happened = true;
-    inter.coords = ray(t_tmp);//???
+    inter.coords = ray(t_tmp);//
     inter.normal = normal;
     //inter.distance = distance(Vector3f(v0,v1,v2),ray.origin);
-    inter.distance = t_tmp;//???
+    inter.distance = t_tmp;//
     inter.obj = this;
     inter.m = m;
 
