@@ -228,8 +228,8 @@ void Renderer::Render(const Scene& scene)
             // vector that passes through it.
             // Also, don't forget to multiply both of them with the variable *scale*, and
             // x (horizontal) variable with the *imageAspectRatio*      
-            x = imageAspectRatio * ( 2*float(i) / (float)scene.width - 1 );
-            y = 1 - ( 2 *float(j) / float(scene.height) );
+            x = imageAspectRatio * ( 2*float(i +0.5f) / (float)scene.width - 1 );
+            y = 1 - ( 2 *float(j+0.5f) / float(scene.height) );
             //std::cout << x <<"---"<<y <<'\n';
             Vector3f dir = Vector3f(x, y, -1); // Don't forget to normalize this direction!
             dir = normalize(dir);

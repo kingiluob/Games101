@@ -31,8 +31,6 @@ bool Scene::trace(
             index = indexK;
         }
     }
-
-
     return (*hitObject != nullptr);
 }
 
@@ -141,6 +139,5 @@ Vector3f Scene::castRay(const Ray &ray, int depth) const
             }
         }
     }
-
     return hitColor;
 }
