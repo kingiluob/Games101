@@ -55,9 +55,9 @@ void Renderer::Render(const Scene& scene)
     {
     float total = (float)scene.width * (float)scene.height;
     // change the spp value to change sample ammount
-    int spp = 8;
+    int spp = 2;
     std::cout << "SPP: " << spp << "\n";
-    //#pragma omp parallel for 
+    #pragma omp parallel for 
     //config for the simple multithreading code
     for (uint32_t j = 0; j < scene.height; ++j) {
         for (uint32_t i = 0; i < scene.width; ++i) {
