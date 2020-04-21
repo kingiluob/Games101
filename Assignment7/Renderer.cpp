@@ -5,11 +5,12 @@
 #include <fstream>
 #include "Scene.hpp"
 #include "Renderer.hpp"
+#include "omp.h"
 
 
 inline float deg2rad(const float& deg) { return deg * M_PI / 180.0; }
 
-const float EPSILON = 0.00001;
+const float EPSILON = 0.0001;
 
 // The main render function. This where we iterate over all pixels in the image,
 // generate primary rays and cast these rays into the scene. The content of the
@@ -22,10 +23,12 @@ void Renderer::Render(const Scene& scene)
     float imageAspectRatio = scene.width / (float)scene.height;
     Vector3f eye_pos(278, 273, -800);
     int m = 0;
-
+    float mMax = (float)scene.width * (float)scene.height;
     // change the spp value to change sample ammount
     int spp = 16;
     std::cout << "SPP: " << spp << "\n";
+    #pragma omp parallel for
+    //num_threads(8) collapse(2) schedule(dynamic,4)
     for (uint32_t j = 0; j < scene.height; ++j) {
         for (uint32_t i = 0; i < scene.width; ++i) {
             // generate primary ray direction
@@ -34,12 +37,18 @@ void Renderer::Render(const Scene& scene)
             float y = (1 - 2 * (j + 0.5) / (float)scene.height) * scale;
 
             Vector3f dir = normalize(Vector3f(-x, y, 1));
+            thread_local Vector3f color = Vector3f(0.0);
             for (int k = 0; k < spp; k++){
-                framebuffer[m] += scene.castRay(Ray(eye_pos, dir), 0) / spp;  
+                color += scene.castRay(Ray(eye_pos, dir), 0) / spp;  
             }
-            m++;
+            framebuffer[j*scene.width+i] += color;
+            #pragma omp critical
+            {
+                m++; 
+                UpdateProgress((float)m / mMax);
+            }
+            
         }
-        UpdateProgress(j / (float)scene.height);
     }
     UpdateProgress(1.f);
 

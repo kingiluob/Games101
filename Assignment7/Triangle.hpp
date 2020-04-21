@@ -262,9 +262,12 @@ inline Intersection Triangle::getIntersection(Ray ray)
         Object* obj;
         Material* m;
     */
-    if(t_tmp < 0) return inter;
-    inter.happened = true;
+    //if(t_tmp < 0) return inter;
+    inter.happened = t_tmp > 0 && u>0 && v>0 && (1-u-v>0);
     inter.coords = ray(t_tmp);//
+    inter.emit = m->getEmission();
+    //Vector3f tt = t0,t1,t2;
+    //inter.tcoords = tt;
     inter.normal = normal;
     //inter.distance = distance(Vector3f(v0,v1,v2),ray.origin);
     inter.distance = t_tmp;//
