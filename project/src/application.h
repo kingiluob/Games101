@@ -26,7 +26,7 @@ struct AppConfig {
     ks = 100;
 
     // Environment variables
-    gravity = Vector2D(0, -1);
+    gravity = Vector3D(0, 0,-1);
     steps_per_frame = 64;
   }
 
@@ -34,7 +34,7 @@ struct AppConfig {
   float ks;
 
   float steps_per_frame;
-  Vector2D gravity;
+  Vector3D gravity;
 };
 
 class Application : public Renderer {
@@ -59,6 +59,7 @@ private:
 
   Rope *ropeEuler;
   Rope *ropeVerlet;
+  Cloth *cloth;
 
   size_t screen_width;
   size_t screen_height;

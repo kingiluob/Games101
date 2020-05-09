@@ -2,7 +2,7 @@
 #include <vector>
 
 #include "CGL/vector2D.h"
-
+#include "CGL/vector3D.h"
 #include "mass.h"
 #include "rope.h"
 #include "spring.h"
@@ -15,9 +15,8 @@ namespace CGL {
             return;
         }
         Vector3D CurrentPosition = leftTop;
-        Mass *previous = new Mass(CurrentPosition,nodemass,true);
-        masses.push_back(previous);
         Mass *current = nullptr;
+        Mass *previous = nullptr;
         Spring *presentSpring = nullptr;
         vector<vector<int>> ClothIndex(rows);
         for(int i =0;i<column;i++)
@@ -26,6 +25,7 @@ namespace CGL {
         }
         for(int i =0;i<rows;i++)
         {
+            std::cout<<i<<std::endl;
             for(int j =0;j<column;j++)
             {
                 ClothIndex[i][j] = j*rows + column;
@@ -43,17 +43,17 @@ namespace CGL {
         }
     }
 
-    Cloth::simulateEuler(float delta_t,Vector3D gravity)
+    void Cloth::simulateEuler(float delta_t,Vector3D gravity)
     {
         
     }
 
-    Cloth::simulateVerlet(float delta_t,Vector3D gravity)
+    void Cloth::simulateVerlet(float delta_t,Vector3D gravity)
     {
 
     }
 
-
+/*
     Rope::Rope(Vector2D start, Vector2D end, int num_nodes, float node_mass, float k, vector<int> pinned_nodes)
     {
         // TODO (Part 1): Create a rope starting at `start`, ending at `end`, and containing `num_nodes` nodes.
@@ -161,4 +161,5 @@ namespace CGL {
             m->forces =  Vector2D(0,0);
         }
     }
+    */
 }

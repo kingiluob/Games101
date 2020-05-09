@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
       config.mass = atof(optarg);
       break;
     case 'g':
-      config.gravity = Vector2D(atof(argv[optind - 1]), atof(argv[optind]));
+      config.gravity = Vector3D(atof(argv[optind - 2]),atof(argv[optind - 1]), atof(argv[optind]));
       optind++;
       break;
     case 's':
