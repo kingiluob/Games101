@@ -22,11 +22,11 @@ namespace CGL {
 struct AppConfig {
   AppConfig() {
     // Rope config variables
-    mass = 1;
-    ks = 100;
+    mass = 0.02;
+    ks = 10;
 
     // Environment variables
-    gravity = Vector3D(0, 0,-1);
+    gravity = Vector3D(0,-1,0);
     steps_per_frame = 64;
   }
 

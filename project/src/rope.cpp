@@ -18,23 +18,24 @@ namespace CGL {
         Mass *current = nullptr;
         Mass *previous = nullptr;
         Spring *presentSpring = nullptr;
-        vector<vector<int>> ClothIndex(rows);
-        for(int i =0;i<column;i++)
-        {
-            ClothIndex[i].resize(column);
-        }
+        //vector<vector<int>> ClothIndex(rows);
+        //for(int i =0;i<column;i++)
+        //{
+        //    ClothIndex[i].resize(column);
+        //}
         for(int i =0;i<rows;i++)
         {
-            std::cout<<i<<std::endl;
+            //std::cout<<i<<std::endl;
             for(int j =0;j<column;j++)
             {
-                ClothIndex[i][j] = j*rows + column;
-                CurrentPosition = leftTop + i*(leftTop-leftBot) / (rows-1) + j*(rightTop-leftTop)/(column-1);
-                previous = new Mass(CurrentPosition,nodemass,true);
+                //ClothIndex[i][j] = j*rows + column;
+                CurrentPosition = leftTop + i*(leftBot-leftTop) / (rows-1) + j*(rightTop-leftTop)/(column-1);
+                previous = new Mass(CurrentPosition,nodemass,false);
                 masses.push_back(previous);
             }
         }
-        Mass * head,tail = nullptr;
+        Mass * head = nullptr;
+        Mass * tail = nullptr;
         for(int i =0;i<rows;i++)
         {
             for(int j =0;j<column;j++)
@@ -47,7 +48,7 @@ namespace CGL {
                     presentSpring = new Spring(head,tail,k);
                     springs.push_back(presentSpring);
                     //-2-2-2-2-2-2-2-2
-                    if(i< column-2 )
+                    if(j< column-2 )
                     {
                         tail = masses.at(i*column +j +2);
                         presentSpring = new Spring(head,tail,k);
@@ -82,9 +83,12 @@ namespace CGL {
                     presentSpring = new Spring(head,tail,k);
                     springs.push_back(presentSpring);
                 }
+                tail = nullptr;
             }
         }
-
+        for (auto &i : pinndenodes) {
+            masses[i]->pinned = true;
+        }
     }
 
     void Cloth::simulateEuler(float delta_t,Vector3D gravity)
@@ -112,11 +116,12 @@ namespace CGL {
                 // TODO (Part 3.1): Set the new position of the rope mass
                 Vector3D lastposition = m->position;
                 // TODO (Part 4): Add global Verlet damping
-                float dampfactor = 0.00005;
+                float dampfactor = 0.005;
                 m->position = m->position +  (1 - dampfactor) * (m->position - m->last_position) + a * delta_t *delta_t;
                 m->last_position = lastposition;
             }
             m->forces =  Vector3D(0,0,0);
+        }
     }
 
 /*

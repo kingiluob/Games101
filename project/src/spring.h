@@ -10,8 +10,10 @@ namespace CGL {
 
 struct Spring {
   Spring(Mass *a, Mass *b, float k)
-      : m1(a), m2(b), k(k), rest_length((a->position - b->position).norm()) {}
-
+      : m1(a), m2(b), k(k), rest_length((a->position - b->position).norm()) {
+        //rest_length = 4.0;
+      }
+  //
   float k;
   double rest_length;
 
