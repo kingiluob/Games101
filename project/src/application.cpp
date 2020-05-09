@@ -22,13 +22,16 @@ void Application::init() {
   glLineWidth(2);
 
   glColor3f(1.0, 1.0, 1.0);
-  // Create two ropes 
+  // Create two ropes
   //ropeEuler = new Rope(Vector2D(0, 200), Vector2D(-400, 200), 5, config.mass,
                        //config.ks, {0});
   //ropeVerlet = new Rope(Vector2D(0, 200), Vector2D(-400, 200), 10, config.mass,
                         //config.ks, {0});
-  cloth = new Cloth(Vector3D(-200,200,0),Vector3D(100,200,0),Vector3D(-200,-200,0),Vector3D(100,-200,0),100,100,config.mass,
-                          config.ks,{0,99});
+  //cloth = new Cloth(Vector3D(-200,200,0),Vector3D(200,200,0),Vector3D(-200,-200,0),Vector3D(200,-200,0),10,10,config.mass,
+    //                      config.ks,{0,9});
+
+  cloth = new Cloth(Vector3D(-200,200,-10),Vector3D(200,200,-10),Vector3D(-200,200,390),Vector3D(200,200,390),20,20,config.mass,
+                          config.ks,{0,9});
 }
 
 void Application::render() {
@@ -73,7 +76,8 @@ void Application::resize(size_t w, size_t h) {
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(-half_width, half_width, -half_height, half_height, 1, 0);
+  //glOrtho(-half_width, half_width, -half_height, half_height, 1, 0);
+  glOrtho(-half_width, half_width, -half_height, half_height, -400, 400);
 }
 
 void Application::keyboard_event(int key, int event, unsigned char mods) {

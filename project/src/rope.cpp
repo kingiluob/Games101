@@ -115,7 +115,7 @@ namespace CGL {
                 Vector3D a = m->forces / m->mass;
                 // TODO (Part 3.1): Set the new position of the rope mass
                 Vector3D lastposition = m->position;
-                // TODO (Part 4): Add global Verlet damping
+                // TODO (Part 4): Add glob00al Verlet damping
                 float dampfactor = 0.005;
                 m->position = m->position +  (1 - dampfactor) * (m->position - m->last_position) + a * delta_t *delta_t;
                 m->last_position = lastposition;

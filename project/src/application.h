@@ -22,7 +22,7 @@ namespace CGL {
 struct AppConfig {
   AppConfig() {
     // Rope config variables
-    mass = 0.02;
+    mass = 2;
     ks = 10;
 
     // Environment variables
