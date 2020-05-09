@@ -28,7 +28,7 @@ void Application::init() {
   //ropeVerlet = new Rope(Vector2D(0, 200), Vector2D(-400, 200), 10, config.mass,
                         //config.ks, {0});
   cloth = new Cloth(Vector3D(-200,-100,0),Vector3D(200,-100,0),Vector3D(-200,-500,0),Vector3D(200,-500,0),10,10,config.mass,
-                          config.ks,{0});
+                          config.ks,{0,9});
 }
 
 void Application::render() {
@@ -36,7 +36,7 @@ void Application::render() {
   for (int i = 0; i < config.steps_per_frame; i++) {
     //ropeEuler->simulateEuler(1 / config.steps_per_frame, config.gravity);
     //ropeVerlet->simulateVerlet(1 / config.steps_per_frame, config.gravity);
-    cloth->simulateEuler(1 / config.steps_per_frame, config.gravity);
+    cloth->simulateVerlet(1 / config.steps_per_frame, config.gravity);
   }
   // Rendering ropes
   Rope *rope;
@@ -86,6 +86,20 @@ void Application::render() {
       glVertex3d(p.x, p.y,p.z);
     }
   glEnd();
+
+  //draw lines
+  glBegin(GL_LINES);
+  glColor3f(0.0, 0.0, 1.0);
+    for (auto &s : cloth->springs) {
+      Vector2D p1 = s->m1->position;
+      Vector2D p2 = s->m2->position;
+      glVertex3d(p1.x, p1.y,p1.z);
+      glVertex3d(p2.x, p2.y,p1.z);
+    }
+
+  glEnd();
+
+
   glFlush();
 }
 

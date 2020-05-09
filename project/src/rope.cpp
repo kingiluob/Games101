@@ -34,13 +34,57 @@ namespace CGL {
                 masses.push_back(previous);
             }
         }
+        Mass * head,tail = nullptr;
         for(int i =0;i<rows;i++)
         {
             for(int j =0;j<column;j++)
             {
-
+                head = masses.at(i*column +j);
+                //-------
+                if(j!=column-1)
+                {
+                    tail = masses.at(i*column +j +1);
+                    presentSpring = new Spring(head,tail,k);
+                    springs.push_back(presentSpring);
+                    //-2-2-2-2-2-2-2-2
+                    if(i< column-2 )
+                    {
+                        tail = masses.at(i*column +j +2);
+                        presentSpring = new Spring(head,tail,k);
+                        springs.push_back(presentSpring);
+                    }
+                }
+                //||||||||||||
+                if(i!=rows-1)
+                {
+                    tail = masses.at((i+1)*column+j);
+                    presentSpring = new Spring(head,tail,k);
+                    springs.push_back(presentSpring);
+                    //|2|2|2|2|2|2|2|2
+                    if(i<rows -2)
+                    {
+                        tail = masses.at((i+2)*column+j);
+                        presentSpring = new Spring(head,tail,k);
+                        springs.push_back(presentSpring);
+                    }
+                }
+                //////////////
+                if(j!=0 && i!=rows-1)
+                {
+                    tail = masses.at((i+1)*column + j -1);
+                    presentSpring = new Spring(head,tail,k);
+                    springs.push_back(presentSpring);
+                }
+                //\\\\\\\\\\\\\//
+                if(j!=column-1 && i!=rows-1)
+                {
+                    tail = masses.at((i+1)*column + j +1);
+                    presentSpring = new Spring(head,tail,k);
+                    springs.push_back(presentSpring);
+                }
             }
         }
+
     }
 
     void Cloth::simulateEuler(float delta_t,Vector3D gravity)
@@ -50,7 +94,29 @@ namespace CGL {
 
     void Cloth::simulateVerlet(float delta_t,Vector3D gravity)
     {
+        for (auto &s : springs)
+        {
+            // TODO (Part 3): Simulate one timestep of the rope using explicit Verlet （solving constraints)
+            Vector3D ab = s->m2->position - s->m1->position;
+            Vector3D f = s->k *  (ab / ab.norm()) * (ab.norm() - s->rest_length);
+            s->m1->forces += f;
+            s->m2->forces -= f;
+        }
 
+        for (auto &m : masses)
+        {
+            if (!m->pinned)
+            {
+                m->forces += gravity * m->mass;
+                Vector3D a = m->forces / m->mass;
+                // TODO (Part 3.1): Set the new position of the rope mass
+                Vector3D lastposition = m->position;
+                // TODO (Part 4): Add global Verlet damping
+                float dampfactor = 0.00005;
+                m->position = m->position +  (1 - dampfactor) * (m->position - m->last_position) + a * delta_t *delta_t;
+                m->last_position = lastposition;
+            }
+            m->forces =  Vector3D(0,0,0);
     }
 
 /*
