@@ -95,7 +95,8 @@ public:
         loader.LoadFile(filename);
         area = 0;
         m = mt;
-        assert(loader.LoadedMeshes.size() == 1);
+        //assert(loader.LoadedMeshes.size() == 1);
+        std::cout<<loader.LoadedMeshes.size()<<std::endl;
         auto mesh = loader.LoadedMeshes[0];
 
         Vector3f min_vert = Vector3f{std::numeric_limits<float>::infinity(),
