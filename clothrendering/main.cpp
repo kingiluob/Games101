@@ -31,15 +31,14 @@ int main(int argc, char** argv)
     MeshTriangle left("../models/cornellbox/left.obj", red);
     MeshTriangle right("../models/cornellbox/right.obj", green);
     MeshTriangle light_("../models/cornellbox/light.obj", light);
-    MeshTriangle cloth("../models/pillow/pillow01.obj", green);
-
-    scene.Add(&cloth);
+    MeshTriangle cloth("../models/pillownew.obj", green);
     scene.Add(&floor);
     //scene.Add(&shortbox);
     //scene.Add(&tallbox);
     scene.Add(&left);
     scene.Add(&right);
     scene.Add(&light_);
+    scene.Add(&cloth);
 
     scene.buildBVH();
 
